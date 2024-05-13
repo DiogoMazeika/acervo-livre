@@ -41,7 +41,7 @@ import Topbar from "../components/core/topbar";
 //   );
 // }
 
-export default function App() {
+export default function Root() {
   return (
     <>
       <Topbar />

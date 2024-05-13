@@ -2,28 +2,38 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
+  Navigate,
   RouterProvider,
 } from "react-router-dom";
 
-import App from "./routes/app";
-import Contact from './routes/contact';
-import ErrorPage from './errorPage';
 import reportWebVitals from './reportWebVitals';
+import Root from "./routes";
+import ErrorPage from './errorPage';
+import TelaInicial from './app/telaInicial';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/index.css';
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App />,
+    path: "/app",
+    element: <Root />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/app/contacts/:contactId",
-        element: <Contact />,
+        path: "/app/teste",
+        element: <div>asdsad</div>,
+      },
+      {
+        index: true,
+        path: "/app/*",
+        element: <TelaInicial />,
       },
     ],
+  },
+  {
+    path: "/*",
+    element: <Navigate to="/app" replace />,
   },
 ]);
 
