@@ -1,7 +1,7 @@
-import { Row } from "reactstrap";
-import { Colxx } from "../components/generic/reactstrap";
-import ReactSwiper from "../components/generic/swiper";
-import { useNavigate } from "react-router-dom";
+import { Row } from 'reactstrap';
+import { Colxx } from '../../components/generic/reactstrap';
+import ReactSwiper from '../../components/generic/swiper';
+import { useNavigate } from 'react-router-dom';
 
 export default function TelaInicial() {
   const history = useNavigate();
@@ -13,7 +13,7 @@ export default function TelaInicial() {
             <div
               className="c-pointer w-100 h-100"
               onClick={() => {
-                history("aasdsad");
+                history('app/arquivo');
               }}
             >
               img1
@@ -21,7 +21,7 @@ export default function TelaInicial() {
             <div
               className="c-pointer w-100 h-100"
               onClick={() => {
-                history("aasdsad");
+                history('app/arquivo');
               }}
             >
               img2
@@ -29,7 +29,7 @@ export default function TelaInicial() {
             <div
               className="c-pointer w-100 h-100"
               onClick={() => {
-                history("aasdsad");
+                history('app/arquivo');
               }}
             >
               img3
@@ -37,7 +37,7 @@ export default function TelaInicial() {
             <div
               className="c-pointer w-100 h-100"
               onClick={() => {
-                history("aasdsad");
+                history('aasdsad');
               }}
             >
               img4
@@ -45,7 +45,7 @@ export default function TelaInicial() {
             <div
               className="c-pointer w-100 h-100"
               onClick={() => {
-                history("aasdsad");
+                history('aasdsad');
               }}
             >
               img5

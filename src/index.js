@@ -4,35 +4,40 @@ import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
-} from "react-router-dom";
+} from 'react-router-dom';
 
 import reportWebVitals from './reportWebVitals';
-import Root from "./routes";
+import Root from './routes';
 import ErrorPage from './errorPage';
 import TelaInicial from './app/telaInicial';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/index.css';
+import Arquivo from './app/arquivo';
 
 const router = createBrowserRouter([
   {
-    path: "/app",
+    path: '/app',
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/app/teste",
+        path: '/app/teste',
         element: <div>asdsad</div>,
       },
       {
+        path: 'app/arquivo',
+        element: <Arquivo />,
+      },
+      {
         index: true,
-        path: "/app/*",
+        path: '/app/*',
         element: <TelaInicial />,
       },
     ],
   },
   {
-    path: "/*",
+    path: '/*',
     element: <Navigate to="/app" replace />,
   },
 ]);
