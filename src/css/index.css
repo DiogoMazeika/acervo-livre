@@ -80,7 +80,7 @@ body.dark-mode #main-topbar {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: var(--card-background-color-light);
+  /* background: var(--card-background-color-light); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,7 +88,7 @@ body.dark-mode #main-topbar {
 }
 
 body.dark-mode .swiper-slide {
-  background: var(--card-background-color-dark);
+  /* background: var(--card-background-color-dark); */
 }
 
 .swiper-slide img {
@@ -195,4 +195,11 @@ body.dark-mode textarea {
 body.dark-mode .card {
   background-color: var(--card-background-color-dark);
   color: var(--secondary-text-color);
+}
+
+
+.container_input-file {
+  width: 4rem;
+  height: 4rem;
+  border: dashed;
 }
