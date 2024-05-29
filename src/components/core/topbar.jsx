@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Row } from 'reactstrap';
+import { DropdownItem, DropdownMenu, Row, Dropdown } from 'reactstrap';
 import { Colxx } from '../reactstrap';
 import RcSwitch from '../rcSwitch';
 import Svg from '../svg';
-import logo from '../../logo.svg';
 
 export default function Topbar() {
   const [switchTheme, setSwitchTheme] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     document.body.className = switchTheme ? 'dark-mode' : '';
@@ -15,25 +15,39 @@ export default function Topbar() {
   return (
     <div id="main-topbar">
       <Row className="h-100 align-items-center">
-        <Colxx xxs="4">
-          {/* <Svg icon="AutoStories" /> */}
-          <img src={logo} className="w-10" alt="logo" />
+        <Colxx xxs="3">
+          <Svg
+            icon="Menu"
+            className="c-pointer"
+            onClick={() => setDropdownOpen((o) => !o)}
+          />
+          <Dropdown isOpen={dropdownOpen}>
+            <DropdownMenu>
+              <DropdownItem>Foo Action</DropdownItem>
+              <DropdownItem>Bar Action</DropdownItem>
+              <DropdownItem>Quo Action</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         </Colxx>
-        <Colxx xxs="4">
-          <div className="h1 text-center">Acervo Livre</div>
+        <Colxx xxs="6" className="h-100">
+          <div className="w-100 h-100 d-flex align-items-center justify-content-center">
+            <img
+              src="http://localhost:8081/api/arquivos/thumbnail/logo"
+              alt="logo"
+              className="mh-100"
+            />
+            <div className="h1">Acervo Livre</div>
+          </div>
         </Colxx>
-        <Colxx xxs="4">
-          <Row>
-            <Colxx>teste</Colxx>
-            <Colxx>
-              <RcSwitch
-                checkedIcon="DarkMode"
-                uncheckedIcon="LightMode"
-                checked={switchTheme}
-                onChange={() => setSwitchTheme((o) => !o)}
-              />
-            </Colxx>
-          </Row>
+        <Colxx xxs="3">
+          <div className="d-flex justify-content-end">
+            <RcSwitch
+              checkedIcon="DarkMode"
+              uncheckedIcon="LightMode"
+              checked={switchTheme}
+              onChange={() => setSwitchTheme((o) => !o)}
+            />
+          </div>
         </Colxx>
       </Row>
     </div>

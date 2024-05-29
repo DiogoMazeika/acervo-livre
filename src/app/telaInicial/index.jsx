@@ -11,9 +11,13 @@ export default function TelaInicial() {
   const [homeArquivos, setHomeArquivos] = useState([]);
 
   useEffect(() => {
-    get('arquivos/arquivos').then(({ data }) => {
-      setHomeArquivos([...data]);
-    });
+    get('arquivos/arquivos')
+      .then(({ data }) => {
+        setHomeArquivos([...data]);
+      })
+      .catch(() => {
+        console.debug('err');
+      });
   }, []);
 
   return (

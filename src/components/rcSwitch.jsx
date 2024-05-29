@@ -1,5 +1,5 @@
-import ReactSwitch from "react-switch";
-import Svg from "./svg";
+import ReactSwitch from 'react-switch';
+import Svg from './svg';
 
 export default function RcSwitch({
   checked,
@@ -15,7 +15,7 @@ export default function RcSwitch({
       height={24}
       handleDiameter={16}
       // height={20}
-      onColor="#9c00d4"
+      onColor="#dda534"
       checkedIcon={
         checkedIcon ? (
           <div className="w-100 h-100 d-flex align-items-center justify-content-center">

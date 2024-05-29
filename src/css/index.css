@@ -1,6 +1,6 @@
 :root {
-  --primary-color-light: #FFC300;
-  --primary-color-dark: #FFD700;
+  --primary-color-light: #dda534;
+  --primary-color-dark: #dda534;
   --primary-text-color: #121212;
   --secondary-text-color: #fff;
   --background-color-light: #fff;
@@ -8,12 +8,15 @@
   --card-background-color-light: #f5f5f5;
   --card-background-color-dark: #1e1e1e;
   /* botoes */
-  --button-background-color-light: #FFC300;
-  --button-background-color-dark: #FFD700;
-  --button-background-color-hover-light: #FFC107;
-  --button-background-color-hover-dark: #E0A800;
-  --button-background-color-active-light: #FFA000;
-  --button-background-color-active-dark: #CC8E00;
+  --button-background-color-light: #dda534;
+  --button-background-color-dark: #dda534;
+  --button-background-color-hover-light: #ffc107;
+  --button-background-color-hover-dark: #e0a800;
+  --button-background-color-black-hover-dark: #2e2e2e;
+  --button-background-color-active-light: #ffa000;
+  --button-background-color-white-active-light: #e6e6e6;
+  --button-background-color-white-hover-light: #efefef;
+  --button-background-color-active-dark: #cc8e00;
   --button-text-color-light: #121212;
   --button-text-color-dark: #fff;
   --border-radius: 4px;
@@ -51,7 +54,7 @@ body.dark-mode {
 }
 
 #main-topbar {
-  background: var(--primary-color-light);
+  background: var(--card-background-color-light);
   width: 100%;
   height: 65px;
   padding: 0 10px;
@@ -62,7 +65,7 @@ body.dark-mode {
 }
 
 body.dark-mode #main-topbar {
-  background: var(--primary-color-dark);
+  background: var(--card-background-color-dark);
 }
 
 .app {
@@ -163,6 +166,31 @@ body.dark-mode .btn:active {
   background-color: var(--button-background-color-active-dark) !important;
   color: var(--button-text-color-dark) !important;
   transform: scale(0.98) !important;
+}
+
+body.dark-mode .dropdown-menu {
+  background-color: var(--background-color-dark) !important;
+}
+
+body.dark-mode .dropdown-item {
+  background-color: var(--background-color-dark) !important;
+  color: var(--button-text-color-dark) !important;
+}
+
+.dropdown-item:hover {
+  background-color: var(--button-background-color-white-hover-light) !important;
+}
+
+body.dark-mode .dropdown-item:hover {
+  background-color: var(--button-background-color-black-hover-dark) !important;
+}
+
+.dropdown-item:active {
+  background-color: var(--button-background-color-white-active-light) !important;
+}
+
+body.dark-mode .dropdown-item:active {
+  background-color: var(--card-background-color-dark) !important;
 }
 
 input,
