@@ -12,20 +12,38 @@ export default function Topbar() {
     document.body.className = switchTheme ? 'dark-mode' : '';
   }, [switchTheme]);
 
+  useEffect(() => {
+    const hideDropDown = (e) => {
+      console.debug(e?.target?.parentElement?.id, e?.target?.id);
+      if (
+        e?.target?.parentElement?.id !== 'topbar_dropdownmenu_toggle'
+        && e?.target?.id !== 'topbar_dropdownmenu_toggle'
+        && e?.target?.id !== 'topbar_dropdownmenu'
+        && e?.target?.parentElement?.id !== 'topbar_dropdownmenu'
+      ) {
+        // console.debug('aqui aquia  asodhsadu');
+      }
+    }
+    document.body.addEventListener('click', hideDropDown);
+
+    return () => {
+      document.body.removeEventListener('click', hideDropDown);
+    }
+  }, [])
+
   return (
     <div id="main-topbar">
       <Row className="h-100 align-items-center">
         <Colxx xxs="3">
           <Svg
             icon="Menu"
+            id="topbar_dropdownmenu_toggle"
             className="c-pointer"
             onClick={() => setDropdownOpen((o) => !o)}
           />
-          <Dropdown isOpen={dropdownOpen}>
-            <DropdownMenu>
-              <DropdownItem>Foo Action</DropdownItem>
-              <DropdownItem>Bar Action</DropdownItem>
-              <DropdownItem>Quo Action</DropdownItem>
+          <Dropdown isOpen={dropdownOpen} toggle={() => {}}>
+            <DropdownMenu id="topbar_dropdownmenu">
+              <DropdownItem className="topbar_dropdownmenu_option" onClick={()=> console.debug('object')}>Adicionar</DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </Colxx>
