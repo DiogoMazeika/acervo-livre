@@ -27,6 +27,10 @@ export default function Arquivo() {
     setModoEdit(true);
   }, []);
 
+  useEffect(() => {
+    get('arquivos/tags').then(({ data }) => console.debug(data));
+  }, [])
+
   const update = (campo, valor) => setDados((o) => ({ ...o, [campo]: valor }));
 
   const teste = ({ target: { files } }) => {
@@ -88,6 +92,11 @@ export default function Arquivo() {
       <Row>
         <Colxx>
           <CustomFile onChange={teste} />
+        </Colxx>
+      </Row>
+      <Row>
+        <Colxx>
+        <InputOpts/>
         </Colxx>
       </Row>
     </>
