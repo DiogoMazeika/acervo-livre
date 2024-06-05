@@ -230,4 +230,13 @@ body.dark-mode .card {
   width: 4rem;
   height: 4rem;
   border: dashed;
+  position: relative;
+}
+
+.container_input-file>input {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  visibility: hidden;
 }

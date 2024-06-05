@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button, Input, Row } from 'reactstrap';
 import { Colxx } from '../../components/reactstrap';
-import Svg from '../../components/svg';
 import CustomFile from '../../components/customFile';
 import { get, post, put } from '../../axios';
 import { searchToMap } from '../../helpers';
@@ -30,6 +29,19 @@ export default function Arquivo() {
 
   const update = (campo, valor) => setDados((o) => ({ ...o, [campo]: valor }));
 
+  const teste = ({ target: { files } }) => {
+    console.debug(files[0]);
+    post(
+      'arquivos/uploadTemp',
+      { file: files[0] },
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        }
+      }
+      );
+  };
+
   const salvar = async () => {
     if (dados.id) {
       await put('arquivos/arquivo', dados);
@@ -56,13 +68,6 @@ export default function Arquivo() {
                 dados.nome
               )}
             </div>
-            {/* <div className="ml-3">
-      <Svg
-        icon="Create"
-        className="c-pointer"
-        onClick={() => setModoEdit((o) => !o)}
-      />
-    </div> */}
           </div>
         </Colxx>
         <Colxx xxs="4">
@@ -82,7 +87,7 @@ export default function Arquivo() {
       </Row>
       <Row>
         <Colxx>
-          <CustomFile />
+          <CustomFile onChange={teste} />
         </Colxx>
       </Row>
     </>

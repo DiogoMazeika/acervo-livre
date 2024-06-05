@@ -1,10 +1,7 @@
 import { Input, Label } from 'reactstrap';
 import Svg from './svg';
 
-export default function CustomFile() {
-  const teste = ({ target: { files } }) => {
-    console.debug(files[0]);
-  };
+export default function CustomFile({ onChange = () => {} }) {
   return (
     <div className="container_input-file">
       <Label
@@ -13,7 +10,7 @@ export default function CustomFile() {
       >
         <Svg icon="AttachFile" />
       </Label>
-      <Input onChange={teste} type="file" id="file" />
+      <Input onChange={onChange} type="file" id="file" />
     </div>
   );
 }

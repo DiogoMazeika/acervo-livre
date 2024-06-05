@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { DropdownItem, DropdownMenu, Row, Dropdown } from 'reactstrap';
 import { Colxx } from '../reactstrap';
 import RcSwitch from '../rcSwitch';
 import Svg from '../svg';
 
 export default function Topbar() {
+  const history = useNavigate();
+
   const [switchTheme, setSwitchTheme] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -14,14 +17,13 @@ export default function Topbar() {
 
   useEffect(() => {
     const hideDropDown = (e) => {
-      console.debug(e?.target?.parentElement?.id, e?.target?.id);
       if (
         e?.target?.parentElement?.id !== 'topbar_dropdownmenu_toggle'
         && e?.target?.id !== 'topbar_dropdownmenu_toggle'
         && e?.target?.id !== 'topbar_dropdownmenu'
-        && e?.target?.parentElement?.id !== 'topbar_dropdownmenu'
+        // && e?.target?.parentElement?.id !== 'topbar_dropdownmenu'
       ) {
-        // console.debug('aqui aquia  asodhsadu');
+        setDropdownOpen(false);
       }
     }
     document.body.addEventListener('click', hideDropDown);
@@ -43,7 +45,7 @@ export default function Topbar() {
           />
           <Dropdown isOpen={dropdownOpen} toggle={() => {}}>
             <DropdownMenu id="topbar_dropdownmenu">
-              <DropdownItem className="topbar_dropdownmenu_option" onClick={()=> console.debug('object')}>Adicionar</DropdownItem>
+              <DropdownItem onClick={()=> history('app/arquivo')}>Adicionar</DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </Colxx>

@@ -6,8 +6,8 @@ const get = async (url, params = {}) => {
   return axios.get(`${http}/${url}`, { params }).then((res) => res);
 };
 
-const post = async (url, data = {}) => {
-  return axios.post(`${http}/${url}`, data).then((res) => res);
+const post = async (url, data = {}, extra) => {
+  return axios.post(`${http}/${url}`, data, extra).then((res) => res);
 };
 
 const put = async (url, data = {}) => {
