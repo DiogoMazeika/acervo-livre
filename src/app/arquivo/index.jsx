@@ -5,6 +5,7 @@ import { Colxx } from '../../components/reactstrap';
 import CustomFile from '../../components/customFile';
 import { get, post, put } from '../../axios';
 import { searchToMap } from '../../helpers';
+import ModalTags from './modalTags';
 
 export default function Arquivo() {
   const history = useNavigate();
@@ -12,6 +13,7 @@ export default function Arquivo() {
 
   const [dados, setDados] = useState({ nome: '' });
   const [modoEdit, setModoEdit] = useState(false);
+  const [modalTagsOpen, setModalTagsOpen] = useState(false);
 
   useEffect(() => {
     const { id } = searchToMap(search);
@@ -29,21 +31,25 @@ export default function Arquivo() {
 
   useEffect(() => {
     get('arquivos/tags').then(({ data }) => console.debug(data));
-  }, [])
+  }, []);
 
   const update = (campo, valor) => setDados((o) => ({ ...o, [campo]: valor }));
 
-  const teste = ({ target: { files } }) => {
+  const uploadTemp = ({ target: { files } }) => {
+    const [file] = files;
     console.debug(files[0]);
+    // post('arquivos/arquivoTemp', { nome: file.name }).then(({ data }) => {
+    // file.name = `${data.qnd}_${file.name}`;
     post(
-      'arquivos/uploadTemp',
-      { file: files[0] },
+      'arquivos/uploadFile',
+      { file },
       {
         headers: {
           'Content-Type': 'multipart/form-data',
-        }
+        },
       }
-      );
+    );
+    // });
   };
 
   const salvar = async () => {
@@ -60,7 +66,7 @@ export default function Arquivo() {
       <Row>
         <Colxx xxs="8" className="h2">
           <div className="d-flex">
-            <div className="w-40">
+            <div className="w-50">
               {modoEdit ? (
                 <Input
                   value={dados.nome}
@@ -90,14 +96,20 @@ export default function Arquivo() {
         </Colxx>
       </Row>
       <Row>
-        <Colxx>
-          <CustomFile onChange={teste} />
+        <Colxx xxs="8">
+          <div className="w-50">
+            <CustomFile onChange={uploadTemp} />
+          </div>
         </Colxx>
       </Row>
-      <Row>
+      <Row className="mt-4">
         <Colxx>
-        <InputOpts/>
+          <Button onClick={() => setModalTagsOpen(true)}>Tags</Button>
         </Colxx>
+        <ModalTags
+          isOpen={modalTagsOpen}
+          close={() => setModalTagsOpen(false)}
+        />
       </Row>
     </>
   );
