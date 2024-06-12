@@ -12,6 +12,7 @@ export default function Arquivo() {
   const { search } = useLocation();
 
   const [dados, setDados] = useState({ nome: '' });
+  const [tags, setTags] = useState([]);
   const [modoEdit, setModoEdit] = useState(false);
   const [modalTagsOpen, setModalTagsOpen] = useState(false);
 
@@ -30,7 +31,7 @@ export default function Arquivo() {
   }, []);
 
   useEffect(() => {
-    get('arquivos/tags').then(({ data }) => console.debug(data));
+    get('arquivos/tags').then(({ data }) => setTags(data));
   }, []);
 
   const update = (campo, valor) => setDados((o) => ({ ...o, [campo]: valor }));
@@ -107,6 +108,7 @@ export default function Arquivo() {
           <Button onClick={() => setModalTagsOpen(true)}>Tags</Button>
         </Colxx>
         <ModalTags
+          tags={tags}
           isOpen={modalTagsOpen}
           close={() => setModalTagsOpen(false)}
         />

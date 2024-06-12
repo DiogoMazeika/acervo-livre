@@ -255,3 +255,11 @@ body.dark-mode .modal-content {
   height: 0;
   visibility: hidden;
 }
+
+.badge.bg-primary {
+  background: var(--primary-color-light) !important;
+}
+
+body.dark-mode .badge.bg-primary {
+  background: var(--primary-color-dark) !important;
+}
