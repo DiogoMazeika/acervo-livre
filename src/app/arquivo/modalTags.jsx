@@ -1,22 +1,31 @@
 import { useEffect, useState } from 'react';
 import { Badge, Input, Modal, ModalBody } from 'reactstrap';
 
-export default function ModalTags({ tags, isOpen, selectedTags, setSelectedTags, close }) {
+export default function ModalTags({
+  tags,
+  isOpen,
+  selectedTags,
+  setSelectedTags,
+  close,
+}) {
   const [noSelectedTags, setNoSelectedTags] = useState([]);
   const [filtro, setFiltro] = useState('');
   // const [noFiltro, setNoFiltro] = useState('');
 
   useEffect(() => {
     setFiltro('');
-    setNoSelectedTags([...tags.filter(({id}) => !(selectedTags.map((t)=>t.id)).includes(id))]);
-  }, [isOpen, tags])
+    setNoSelectedTags([
+      ...tags.filter(({ id }) => !selectedTags.map((t) => t.id).includes(id)),
+    ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, tags]);
 
   const addTag = (tag, id) => {
     const aux = [...selectedTags];
     // if (id === -1) aux.push({ id: `novo_${Date.now()}`, nome: filtro });
     // else
     aux.push(tag);
-    
+
     setSelectedTags(aux);
 
     // if (id !== -1) {
@@ -40,7 +49,7 @@ export default function ModalTags({ tags, isOpen, selectedTags, setSelectedTags,
 
     const aux = [...selectedTags];
     aux.splice(i, 1);
-    
+
     setSelectedTags(aux);
   };
 
@@ -78,7 +87,8 @@ export default function ModalTags({ tags, isOpen, selectedTags, setSelectedTags,
           {noSelectedTags
             .filter(
               ({ nome }) =>
-                (filtro === '' && nome != null) || nome?.toLowerCase()?.includes(filtro.toLowerCase())
+                (filtro === '' && nome != null) ||
+                nome?.toLowerCase()?.includes(filtro.toLowerCase())
               // || (filtro !== '' && nome == null && filtro !== noFiltro)
             )
             .sort((a, b) => a.nome > b.nome)

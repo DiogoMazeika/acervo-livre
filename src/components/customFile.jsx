@@ -1,14 +1,24 @@
 import { Input, Label } from 'reactstrap';
 import Svg from './svg';
 
-export default function CustomFile({ onChange = () => {} }) {
+export default function CustomFile({ file = {}, onChange = () => {} }) {
   return (
-    <div className="container_input-file">
+    <div className={`container_input-file ${file.id ? 'border-0' : 'max'}`}>
       <Label
         for="file"
-        className="w-100 h-100 d-flex justify-content-center align-items-center mb-0 c-pointer"
+        className={`w-f h-100 d-flex ${
+          file.id ? '' : 'justify-content-center'
+        } align-items-center mb-0 c-pointer`}
       >
-        <Svg icon="AttachFile" />
+        {file.id ? (
+          <img
+            className="h-100"
+            src={`http://localhost:8081/api/arquivos/thumbnail/${file.id}`}
+            alt="img"
+          />
+        ) : (
+          <Svg icon="AttachFile" />
+        )}
       </Label>
       <Input onChange={onChange} type="file" id="file" />
     </div>

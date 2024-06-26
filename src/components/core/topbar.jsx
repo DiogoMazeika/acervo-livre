@@ -18,20 +18,20 @@ export default function Topbar() {
   useEffect(() => {
     const hideDropDown = (e) => {
       if (
-        e?.target?.parentElement?.id !== 'topbar_dropdownmenu_toggle'
-        && e?.target?.id !== 'topbar_dropdownmenu_toggle'
-        && e?.target?.id !== 'topbar_dropdownmenu'
+        e?.target?.parentElement?.id !== 'topbar_dropdownmenu_toggle' &&
+        e?.target?.id !== 'topbar_dropdownmenu_toggle' &&
+        e?.target?.id !== 'topbar_dropdownmenu'
         // && e?.target?.parentElement?.id !== 'topbar_dropdownmenu'
       ) {
         setDropdownOpen(false);
       }
-    }
+    };
     document.body.addEventListener('click', hideDropDown);
 
     return () => {
       document.body.removeEventListener('click', hideDropDown);
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <div id="main-topbar">
@@ -45,7 +45,9 @@ export default function Topbar() {
           />
           <Dropdown isOpen={dropdownOpen} toggle={() => {}}>
             <DropdownMenu id="topbar_dropdownmenu">
-              <DropdownItem onClick={()=> history('app/arquivo')}>Adicionar</DropdownItem>
+              <DropdownItem onClick={() => history('app/arquivo')}>
+                Adicionar
+              </DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </Colxx>

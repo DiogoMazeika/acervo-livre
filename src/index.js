@@ -14,18 +14,25 @@ import TelaInicial from './app/telaInicial';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/index.css';
 import './css/base.css';
+import Login from './login';
 import Arquivo from './app/arquivo';
 
 const router = createBrowserRouter([
+  {
+    path: '/login',
+    element: <Login />,
+    children: [
+      {
+        path: '/login/*',
+        element: <Login />,
+      },
+    ]
+  },
   {
     path: '/app',
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: '/app/teste',
-        element: <div>asdsad</div>,
-      },
       {
         path: 'app/arquivo',
         element: <Arquivo />,
