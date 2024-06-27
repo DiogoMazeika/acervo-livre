@@ -6,8 +6,8 @@ export default function CustomFile({ file = {}, onChange = () => {} }) {
     <div className={`container_input-file ${file.id ? 'border-0' : 'max'}`}>
       <Label
         for="file"
-        className={`w-f h-100 d-flex ${
-          file.id ? '' : 'justify-content-center'
+        className={`h-100 d-flex ${
+          file.id ? 'w-f' : 'w-100 justify-content-center'
         } align-items-center mb-0 c-pointer`}
       >
         {file.id ? (
@@ -20,7 +20,12 @@ export default function CustomFile({ file = {}, onChange = () => {} }) {
           <Svg icon="AttachFile" />
         )}
       </Label>
-      <Input onChange={onChange} type="file" id="file" />
+      <Input
+        onChange={onChange}
+        type="file"
+        id="file"
+        accept="application/pdf"
+      />
     </div>
   );
 }
