@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Row } from 'reactstrap';
+import { Card, CardBody, Row } from 'reactstrap';
 import { Colxx } from '../../components/reactstrap';
 import ReactSwiper from '../../components/swiper';
 import { get } from '../../axios';
@@ -46,7 +46,37 @@ export default function TelaInicial() {
             })}
           </ReactSwiper>
         </Colxx>
-        <Colxx xxs="9">alguma coisa aqui</Colxx>
+        <Colxx xxs="9">
+          <Row className="h-100">
+            <Colxx xxs="4">
+              <div className="text-center">Seus arquivos enviados</div>
+            </Colxx>
+            <Colxx xxs="8">
+              <Row>
+                <Colxx xxs="4">
+                  <Card>
+                    <CardBody>teste</CardBody>
+                  </Card>
+                </Colxx>
+                <Colxx xxs="4">
+                  <Card>
+                    <CardBody>teste</CardBody>
+                  </Card>
+                </Colxx>
+                <Colxx xxs="4">
+                  <Card>
+                    <CardBody>teste</CardBody>
+                  </Card>
+                </Colxx>
+                <Colxx xxs="4">
+                  <Card>
+                    <CardBody>teste</CardBody>
+                  </Card>
+                </Colxx>
+              </Row>
+            </Colxx>
+          </Row>
+        </Colxx>
       </Row>
     </Colxx>
   );
