@@ -13,8 +13,8 @@ export default function NovoUsuario () {
 	const update = (campo, valor) => setDados((d) => ({ ...d, [campo]: valor }));
 
 	const salvar = () => {
-		post('usuario/cadastro', dados).then(() => {
-			history('/app');
+		post('usuario/usuario', dados).then(() => {
+			history('/login');
 		})
 	};
 
@@ -40,12 +40,14 @@ export default function NovoUsuario () {
 								<Colxx xxs="12" className="my-2">
 									<Label>Senha</Label>
 									<Input
+										type="password"
 										onChange={({ target: { value } }) => update('senha', value)}
 									/>
 								</Colxx>
 								<Colxx xxs="12" className="my-2">
 									<Label>Confirme a senha</Label>
 									<Input
+										type="password"
 										onChange={({ target: { value } }) => update('senha2', value)}
 									/>
 								</Colxx>

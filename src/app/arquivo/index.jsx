@@ -54,6 +54,9 @@ export default function Arquivo() {
 
       Promise.all(promises).then(() => {
         update('file', { ...data, original: file.name });
+        if (dados.nome === '') {
+          update('nome', file.name);
+        }
       });
     });
     // });
@@ -94,6 +97,17 @@ export default function Arquivo() {
         </Colxx>
         <Colxx xxs="4">
           <Row className="justify-content-end">
+            <Colxx xxs="6" className="mr-auto">
+              {dados.file && dados.id && (
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`http://localhost:8081/api/arquivos/pdf/${dados.id}`}
+                >
+                  Abrir arquivo
+                </a>
+              )}
+            </Colxx>
             <Colxx xxs="3">
               <Button color="primary" onClick={salvar}>
                 Salvar

@@ -14,24 +14,11 @@ export default function TelaInicial() {
 
   useEffect(() => {
     get('arquivos/arquivos')
-      .then(({ data: { home, userFiles } }) => {
-        setHomeArquivos([...home]);
-        setUserArquivos([...userFiles]);
+      .then(({ data: { arquivos, arquivosUser } }) => {
+        setHomeArquivos(arquivos);
+        setUserArquivos(arquivosUser);
       })
       .catch(() => {
-        const teste = [
-          {id: 1, nome: 'teste', cd: 1},
-          {id: 2, nome: 'teste2', cd: 2},
-          {id: 3, nome: 'teste3', cd: 3},
-          {id: 4, nome: 'teste4', cd: 4},
-          {id: 5, nome: 'nome longo longo de mais mds ta mto longo aaaaaaa', cd: 5},
-          {id: 6, nome: 'teste6', cd: 6},
-          {id: 7, nome: 'teste7', cd: 7},
-          {id: 8, nome: 'teste8', cd: 8},
-        ];
-
-        setHomeArquivos([...teste])
-        setUserArquivos([...teste])
         console.debug('err');
       });
   }, []);

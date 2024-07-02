@@ -10,8 +10,8 @@ export default function Login() {
   const [senha, setSenha] = useState('');
 
   const logar = () => {
-    post('usuario/login', { l: login, s: senha }).then(() => {
-      history('app');
+    post('usuario/login', { l: login, s: senha }).then(({data: { ok }}) => {
+      if (ok) history('/app');
     })
   };
 
