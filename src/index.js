@@ -12,22 +12,14 @@ import ErrorPage from './errorPage';
 import TelaInicial from './app/telaInicial';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 import './css/index.css';
 import './css/base.css';
 import Login from './login';
+import NovoUsuario from './login/novoUsuario';
 import Arquivo from './app/arquivo';
 
 const router = createBrowserRouter([
-  {
-    path: '/login',
-    element: <Login />,
-    children: [
-      {
-        path: '/login/*',
-        element: <Login />,
-      },
-    ]
-  },
   {
     path: '/app',
     element: <Root />,
@@ -43,6 +35,21 @@ const router = createBrowserRouter([
         element: <TelaInicial />,
       },
     ],
+  },
+  {
+    path: '/login',
+    // element: <Login />,
+    children: [
+      {
+        path: 'cadastro',
+        element: <NovoUsuario />,
+      },
+      {
+        index: true,
+        path: '/login/*',
+        element: <Login />,
+      },
+    ]
   },
   {
     path: '/*',

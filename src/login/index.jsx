@@ -1,14 +1,18 @@
 import { Button, Card, CardBody, Input, Label, Row } from 'reactstrap';
+import { useNavigate } from 'react-router-dom';
 import { Colxx } from '../components/reactstrap';
 import { useState } from 'react';
 import { post } from '../axios';
 
 export default function Login() {
+  const history = useNavigate();
   const [login, setLogin] = useState('');
   const [senha, setSenha] = useState('');
 
   const logar = () => {
-    post('usuario/login', { l: login, s: senha });
+    post('usuario/login', { l: login, s: senha }).then(() => {
+      history('app');
+    })
   };
 
   return (
@@ -46,7 +50,13 @@ export default function Login() {
             <Colxx xxs="8">
               <Button onClick={logar}>Entrar</Button>
             </Colxx>
-            <Colxx xxs="4">teste</Colxx>
+            <Colxx xxs="4" className='d-flex justify-content-end'>
+              <Button
+                onClick={() => history(`/login/cadastro`)}
+              >
+                Criar conta
+              </Button>
+            </Colxx>
           </Row>
         </CardBody>
       </Card>

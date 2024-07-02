@@ -68,6 +68,7 @@ export default function Arquivo() {
       await put('arquivos/arquivo', dados);
     } else {
       id = await post('arquivos/arquivo', dados).then(({ data }) => data);
+      setDados((d) => ({ ...d, id }));
     }
     // history(-1);
   };
